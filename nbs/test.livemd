@@ -1,0 +1,13 @@
+# test
+
+```elixir
+Mix.install([{:kino_util, path: "."}])
+```
+
+## Section
+
+<!-- livebook:{"attrs":{},"chunks":null,"kind":"Elixir.KinoUtil","livebook_object":"smart_cell"} -->
+
+```elixir
+IO.puts("Testing")
+```

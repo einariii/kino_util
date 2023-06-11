@@ -26,13 +26,14 @@ defmodule KinoUtil.Utils do
       result
       |> String.trim()
       |> String.split(", ")
+      |> Enum.map(fn x -> String.to_integer(x) end)
       |> (fn x -> Enum.zip(labels, x) end).()
       |> Enum.into(%{})
 
-    util_gpu = values["util_gpu"] |> String.to_integer()
-    util_mem = values["util_mem"] |> String.to_integer()
-    mem_used = values["mem_used"] |> String.to_integer() |> Kernel./(1.0e3) |> Float.round(1)
-    mem_total = values["mem_total"] |> String.to_integer() |> Kernel./(1.0e3) |> Float.round(1)
+    util_gpu = values["util_gpu"]
+    util_mem = values["util_mem"]
+    mem_used = values["mem_used"] |> Kernel./(1.0e3) |> Float.round(1)
+    mem_total = values["mem_total"] |> Kernel./(1.0e3) |> Float.round(1)
 
     {util_gpu, util_mem, mem_used, mem_total}
   end

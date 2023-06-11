@@ -1,3 +1,3 @@
 # kino_util
 
-Smart cell to show system utilization.
+Livebook smart cell to show system utilization.

@@ -2,7 +2,7 @@ defmodule KinoUtil do
   use Kino.JS, assets_path: "lib/assets"
   use Kino.JS.Live
   use Kino.SmartCell, name: "System utilization"
-  alias KinoUtil.Utils
+  # alias KinoUtil.Utils
 
   @impl true
   def handle_connect(ctx) do
