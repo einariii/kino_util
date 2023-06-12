@@ -4,7 +4,7 @@ defmodule KinoUtil do
   use Kino.SmartCell, name: "System utilization"
   alias KinoUtil.Utils
 
-  @update 3000
+  @update 1000
 
   @impl true
   def init(attrs, ctx) do
