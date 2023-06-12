@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:css": "tailwindcss -i ./lib/assets/input.css -o ./lib/assets/main.css",
-    "build:js": "esbuild ./lib/assets/input.js --bundle --outfile=./lib/assets/main.js",
+    "build:css": "tailwindcss -i ./lib/assets/input.css -o ./lib/assets/main.css --minify",
+    "build:js": "esbuild ./lib/assets/alpine.js --bundle --outfile=./lib/assets/alpine_.js --minify",
     "build": "npm run build:css && npm run build:js"
   },
   "keywords": [],
