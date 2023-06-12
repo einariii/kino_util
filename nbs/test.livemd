@@ -6,8 +6,13 @@ Mix.install([{:kino_util, path: "."}])
 
 ## Section
 
-<!-- livebook:{"attrs":{},"chunks":null,"kind":"Elixir.KinoUtil","livebook_object":"smart_cell"} -->
+<!-- livebook:{"attrs":{"cpu_util":16.6,"mem_used":14.1,"mem_util":84.9},"chunks":null,"kind":"Elixir.KinoUtil","livebook_object":"smart_cell"} -->
 
 ```elixir
-IO.puts("Testing")
+values = 16.6
+:ok
+```
+
+```elixir
+x = 10
 ```
