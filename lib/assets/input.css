@@ -14,7 +14,7 @@
     gap: 16px;
     background-color: #61AFEF;
     padding: 8px 16px;
-    border: solid 2px black;
+    border: solid 3px black;
     border-radius: 0.5rem 0.5rem;
 }
 
@@ -29,7 +29,7 @@
     padding: 8px 12px;
     background-color: #788CA9;
     font-size: 0.875rem;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 0.5rem;
     color: black;
     min-width: 130px;
@@ -39,7 +39,7 @@
     padding: 8px 12px;
     background-color: var(--cpuwarning);
     font-size: 0.875rem;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 0.5rem;
     color: white;
     min-width: 130px;
@@ -49,7 +49,7 @@
     padding: 8px 12px;
     background-color: #C6D200;
     font-size: 0.875rem;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 0.5rem;
     color: white;
     min-width: 130px;
@@ -57,9 +57,9 @@
 
 .memcell2 {
     padding: 8px 12px;
-    background-color: #98C379;
+    background-color: var(--memwarning);
     font-size: 0.875rem;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 0.5rem;
     color: white;
     min-width: 130px;
@@ -69,7 +69,7 @@
     padding: 8px 12px;
     background-color: #DA70D6;
     font-size: 0.875rem;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 0.5rem;
     color: white;
     min-width: 130px;
@@ -79,7 +79,7 @@
     padding: 8px 12px;
     background-color: #D19A66;
     font-size: 0.875rem;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 0.5rem;
     color: white;
     min-width: 130px;
