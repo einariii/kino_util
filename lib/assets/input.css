@@ -1,3 +1,118 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --cpuwarning: #E06C75;
+    --memwarning: #98C379;
+    --gpuwarning: #D19A66;
+}
+
+.app2 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background-color: #61AFEF;
+    padding: 8px 16px;
+    border: solid 2px black;
+    border-radius: 0.5rem 0.5rem;
+}
+
+.label2 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #DA70D6;
+    text-transform: uppercase;
+}
+
+.celltitle {
+    padding: 8px 12px;
+    background-color: #788CA9;
+    font-size: 0.875rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    color: black;
+    min-width: 130px;
+}
+
+.cpucell {
+    padding: 8px 12px;
+    background-color: var(--cpuwarning);
+    font-size: 0.875rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    color: white;
+    min-width: 130px;
+}
+
+.memcell {
+    padding: 8px 12px;
+    background-color: #C6D200;
+    font-size: 0.875rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    color: white;
+    min-width: 130px;
+}
+
+.memcell2 {
+    padding: 8px 12px;
+    background-color: #98C379;
+    font-size: 0.875rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    color: white;
+    min-width: 130px;
+}
+
+.gpucell {
+    padding: 8px 12px;
+    background-color: #DA70D6;
+    font-size: 0.875rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    color: white;
+    min-width: 130px;
+}
+
+.gpucell2 {
+    padding: 8px 12px;
+    background-color: #D19A66;
+    font-size: 0.875rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    color: white;
+    min-width: 130px;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.utilyellow {
+    color: #C6D200
+}
+
+.utilblue {
+    color: #61AFEF
+}
+
+.utilgreen {
+    color: #98C379
+}
+
+.utilpink {
+    color: #DA70D6
+}
+
+.utilred {
+    color: #E06C75
+}
+
+.utilgrey {
+    color: #788CA9
+}
+
+.utilorange {
+    color: #D19A66
+}

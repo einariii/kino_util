@@ -11,7 +11,8 @@ defmodule KinoUtil do
     fields = %{
       "cpu_util" => attrs["cpu_util"] || "",
       "mem_used" => attrs["mem_used"] || "",
-      "mem_util" => attrs["mem_util"] || ""
+      "mem_util" => attrs["mem_util"] || "",
+      # "cpu_warning" => attrs["cpu_warning"] || "",
     }
 
     Process.send(self(), "update", [])
@@ -22,6 +23,7 @@ defmodule KinoUtil do
   def handle_info("update", ctx) do
     cpu_util = Utils.cpu_util()
     {mem_used, mem_util} = Utils.mem_util()
+    # cpu_warning = "red"
 
     ctx =
       update(
