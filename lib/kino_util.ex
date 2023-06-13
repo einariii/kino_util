@@ -11,7 +11,7 @@ defmodule KinoUtil do
     fields = %{
       "cpu_util" => attrs["cpu_util"] || "",
       "mem_used" => attrs["mem_used"] || "",
-      "mem_util" => attrs["mem_util"] || "",
+      "mem_util" => attrs["mem_util"] || ""
       # "cpu_warning" => attrs["cpu_warning"] || "",
     }
 
