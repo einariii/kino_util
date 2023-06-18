@@ -1,16 +1,22 @@
 defmodule KinoUtil.Utils do
   def cpu_util() do
-    :cpu_sup.util() |> Float.round(1)
+    :cpu_sup.util() |> round()
   end
 
   def mem_util() do
     result = :memsup.get_system_memory_data()
-    total = (result[:system_total_memory] / 1.0e9) |> Float.round(1)
-    available = (result[:available_memory] / 1.0e9) |> Float.round(1)
-    used = (total - available) |> Float.round(1)
-    used_percent = (used / total * 100.0) |> Float.round(1)
+    total = result[:total_memory]
+    used = total - result[:free_memory]
+    used_percent = round((used / total) * 100)
 
-    {used, used_percent}
+    used_percent
+  end
+
+  def check_gpu() do
+    :os.cmd('nvidia-smi')
+    |> List.to_string()
+    |> String.contains?("command not found")
+    |> Kernel.not()
   end
 
   def gpu_util() do
@@ -32,9 +38,9 @@ defmodule KinoUtil.Utils do
 
     util_gpu = values["util_gpu"]
     util_mem = values["util_mem"]
-    mem_used = values["mem_used"] |> Kernel./(1.0e3) |> Float.round(1)
-    mem_total = values["mem_total"] |> Kernel./(1.0e3) |> Float.round(1)
+    # mem_used = values["mem_used"] |> Kernel./(1.0e3) |> round()
+    # mem_total = values["mem_total"] |> Kernel./(1.0e3) |> round()
 
-    {util_gpu, util_mem, mem_used, mem_total}
+    {util_gpu, util_mem}
   end
 end

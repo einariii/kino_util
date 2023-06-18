@@ -1,6 +1,7 @@
 .history
 .vscode
 node_modules
+lib/assets/output.css
 
 # The directory Mix will write compiled artifacts to.
 /_build/

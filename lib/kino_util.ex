@@ -4,15 +4,18 @@ defmodule KinoUtil do
   use Kino.SmartCell, name: "System utilization"
   alias KinoUtil.Utils
 
-  @update 1000
+  @update_interval 1000
 
   @impl true
   def init(attrs, ctx) do
+    has_gpu = Utils.check_gpu()
+    broadcast_event(ctx, "hasGpu", has_gpu)
+
     fields = %{
-      "cpu_util" => attrs["cpu_util"] || "",
-      "mem_used" => attrs["mem_used"] || "",
-      "mem_util" => attrs["mem_util"] || ""
-      # "cpu_warning" => attrs["cpu_warning"] || "",
+      "cpu_percent" => attrs["cpu_percent"] || 0,
+      "mem_percent" => attrs["mem_percent"] || 0,
+      "gpu_percent" => attrs["gpu_percent"] || 0,
+      "gpu_mem_percent" => attrs["gpu_mem_percent"] || 0
     }
 
     Process.send(self(), "update", [])
@@ -22,19 +25,28 @@ defmodule KinoUtil do
   @impl true
   def handle_info("update", ctx) do
     cpu_util = Utils.cpu_util()
-    {mem_used, mem_util} = Utils.mem_util()
-    # cpu_warning = "red"
+    mem_util = Utils.mem_util()
 
-    ctx =
-      update(
-        ctx,
-        :fields,
-        &Map.merge(&1, %{"cpu_util" => cpu_util, "mem_used" => mem_used, "mem_util" => mem_util})
-      )
+    {gpu_util, gpu_mem_util} =
+      if ctx.assigns.fields["show_gpu"] do
+        Utils.gpu_util()
+      else
+        {0, 0}
+      end
 
-    broadcast_event(ctx, "update", [cpu_util, mem_used, mem_util])
+    IO.inspect(ctx.assigns.fields, label: "pre merge")
+    fields =
+      Map.merge(ctx.assigns.fields, %{
+        "cpu_percent" => cpu_util,
+        "mem_percent" => mem_util,
+        "gpu_percent" => gpu_util,
+        "gpu_mem_percent" => gpu_mem_util
+      })
 
-    Process.send_after(self(), "update", @update)
+    ctx = assign(ctx, fields: fields)
+    IO.inspect(ctx.assigns.fields, label: "post merge")
+    broadcast_event(ctx, "update", fields)
+    Process.send_after(self(), "update", @update_interval)
     {:noreply, ctx}
   end
 
@@ -51,7 +63,7 @@ defmodule KinoUtil do
   @impl true
   def to_source(_attrs) do
     quote do
-      :ok
+      IO.puts("to_source not implemented")
     end
     |> Kino.SmartCell.quoted_to_string()
   end

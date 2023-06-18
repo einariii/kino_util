@@ -13,8 +13,8 @@ defmodule KinoUtil.MixProject do
 
   def application do
     [
-      extra_applications: [:logger, :os_mon],
-      mod: {KinoUtil.Application, []}
+      mod: {KinoUtil.Application, []},
+      extra_applications: [:logger, :os_mon]
     ]
   end
 
