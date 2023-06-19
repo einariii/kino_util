@@ -7,7 +7,7 @@ defmodule KinoUtil.Utils do
     result = :memsup.get_system_memory_data()
     total = result[:total_memory]
     used = total - result[:free_memory]
-    used_percent = round((used / total) * 100)
+    used_percent = round(used / total * 100)
 
     used_percent
   end
@@ -15,8 +15,11 @@ defmodule KinoUtil.Utils do
   def check_gpu() do
     :os.cmd('nvidia-smi')
     |> List.to_string()
-    |> String.contains?("command not found")
+    # Need better check
+    |> String.contains?("not found")
     |> Kernel.not()
+
+    # true
   end
 
   def gpu_util() do

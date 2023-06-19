@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "build:css": "tailwindcss -i ./lib/assets/input.css -o ./lib/assets/output.css",
-    "build:css:watch": "tailwindcss -i ./lib/assets/input.css -o ./lib/assets/output.css --watch",
+    "build:css": "tailwindcss -i ./lib/assets/input.css -o ./lib/assets/output.css --minify",
+    "build:css:watch": "tailwindcss -i ./lib/assets/input.css -o ./lib/assets/output.css --minify --watch",
     "build": "npm run build:css",
     "build:watch": "npm run build:css:watch"
   },
