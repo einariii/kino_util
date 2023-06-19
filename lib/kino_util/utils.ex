@@ -18,8 +18,6 @@ defmodule KinoUtil.Utils do
     # Need better check
     |> String.contains?("not found")
     |> Kernel.not()
-
-    # true
   end
 
   def gpu_util() do

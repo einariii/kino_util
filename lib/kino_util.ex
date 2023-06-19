@@ -11,9 +11,9 @@ defmodule KinoUtil do
   def init(attrs, ctx) do
     fields = %{
       "cpu_percent" => attrs["cpu_percent"] || 0,
-      "mem_percent" => attrs["mem_percent"] || 0
-      # "gpu_percent" => attrs["gpu_percent"] || 0,
-      # "gpu_mem_percent" => attrs["gpu_mem_percent"] || 0,
+      "mem_percent" => attrs["mem_percent"] || 0,
+      "gpu_percent" => attrs["gpu_percent"] || 0,
+      "gpu_mem_percent" => attrs["gpu_mem_percent"] || 0
     }
 
     Process.send_after(self(), "show_gpu", @init_interval)
@@ -33,22 +33,20 @@ defmodule KinoUtil do
     cpu_util = Utils.cpu_util()
     mem_util = Utils.mem_util()
 
-    # {gpu_util, gpu_mem_util} =
-    #   if ctx.assigns.fields["show_gpu"] do
-    #     Utils.gpu_util()
-    #   else
-    #     {0, 0}
-    #   end
+    {gpu_util, gpu_mem_util} =
+      if ctx.assigns.fields["show_gpu"] do
+        Utils.gpu_util()
+      else
+        {0, 0}
+      end
 
     fields =
       Map.merge(ctx.assigns.fields, %{
         "cpu_percent" => cpu_util,
-        "mem_percent" => mem_util
-        # "gpu_percent" => gpu_util,
-        # "gpu_mem_percent" => gpu_mem_util
+        "mem_percent" => mem_util,
+        "gpu_percent" => gpu_util,
+        "gpu_mem_percent" => gpu_mem_util
       })
-
-    IO.inspect(fields, label: "fields update")
 
     ctx = assign(ctx, fields: fields)
     broadcast_event(ctx, "update", fields)

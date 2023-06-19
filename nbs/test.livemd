@@ -6,7 +6,7 @@ Mix.install([{:kino_util, path: "."}])
 
 ## Section
 
-<!-- livebook:{"attrs":{"cpu_percent":10,"mem_percent":76},"chunks":null,"kind":"Elixir.KinoUtil","livebook_object":"smart_cell"} -->
+<!-- livebook:{"attrs":{"cpu_percent":6,"gpu_mem_percent":0,"gpu_percent":0,"mem_percent":71},"chunks":null,"kind":"Elixir.KinoUtil","livebook_object":"smart_cell"} -->
 
 ```elixir
 IO.puts("to_source not implemented")
