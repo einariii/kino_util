@@ -67,7 +67,7 @@ defmodule KinoUtil do
   @impl true
   def to_source(_attrs) do
     quote do
-      IO.puts("to_source not implemented")
+      :ok
     end
     |> Kino.SmartCell.quoted_to_string()
   end
