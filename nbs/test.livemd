@@ -1,12 +1,14 @@
 # test
 
 ```elixir
-Mix.install([{:kino_util, path: "."}])
+Mix.install([
+  {:kino_util, "~> 0.1.0"}
+])
 ```
 
 ## Section
 
-<!-- livebook:{"attrs":{"cpu_percent":17,"gpu_mem_percent":0,"gpu_mem_total":0,"gpu_mem_used":0,"gpu_percent":0,"has_gpu":false,"mem_percent":78,"mem_total":15.404312133789062,"mem_used":12.053050994873047},"chunks":null,"kind":"Elixir.KinoUtil","livebook_object":"smart_cell"} -->
+<!-- livebook:{"attrs":{"cpu_percent":10,"gpu_mem_percent":0,"gpu_mem_total":0,"gpu_mem_used":0,"gpu_percent":0,"has_gpu":false,"mem_percent":75,"mem_total":15.404312133789062,"mem_used":11.629188537597656},"chunks":null,"kind":"Elixir.KinoUtil","livebook_object":"smart_cell"} -->
 
 ```elixir
 :ok
