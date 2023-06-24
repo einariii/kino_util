@@ -1,4 +1,4 @@
-defmodule KinoUtil.Utils do
+defmodule KinoUtil.Measure do
   def cpu_util() do
     :cpu_sup.util() |> round()
   end

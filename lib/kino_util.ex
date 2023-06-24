@@ -2,7 +2,7 @@ defmodule KinoUtil do
   use Kino.JS, assets_path: "lib/assets"
   use Kino.JS.Live
   use Kino.SmartCell, name: "System Utilization"
-  alias KinoUtil.Utils
+  alias KinoUtil.Measure
 
   @interval_init 100
   @interval_update 2_000
@@ -32,7 +32,7 @@ defmodule KinoUtil do
   def handle_info("check_gpu", ctx) do
     fields = ctx.assigns.fields
 
-    has_gpu = Utils.check_gpu()
+    has_gpu = Measure.check_gpu()
 
     Map.merge(fields, %{"has_gpu" => has_gpu})
     broadcast_event(ctx, "has_gpu", has_gpu)
@@ -43,8 +43,8 @@ defmodule KinoUtil do
   def handle_info("update", ctx) do
     fields = ctx.assigns.fields
 
-    cpu_util = Utils.cpu_util()
-    {mem_perc, mem_used, mem_total} = Utils.mem_util()
+    cpu_util = Measure.cpu_util()
+    {mem_perc, mem_used, mem_total} = Measure.mem_util()
 
     values = %{
       "cpu_percent" => cpu_util,
@@ -55,7 +55,7 @@ defmodule KinoUtil do
 
     values =
       if fields["show_gpu"] do
-        {gpu_util, gpu_mem_util, gpu_mem_used, gpu_mem_total} = Utils.gpu_util()
+        {gpu_util, gpu_mem_util, gpu_mem_used, gpu_mem_total} = Measure.gpu_util()
 
         values_gpu = %{
           "gpu_percent" => gpu_util,
