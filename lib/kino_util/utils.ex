@@ -5,17 +5,16 @@ defmodule KinoUtil.Utils do
 
   def mem_util() do
     result = :memsup.get_system_memory_data()
-    total = result[:total_memory]
-    used = total - result[:free_memory]
-    used_percent = round(used / total * 100)
+    total = result[:total_memory] / 1024 / 1024 / 1024
+    used = total - result[:free_memory] / 1024 / 1024 / 1024
+    perc = round(used / total * 100)
 
-    used_percent
+    {perc, used, total}
   end
 
   def check_gpu() do
     :os.cmd('nvidia-smi')
     |> List.to_string()
-    # Need better check
     |> String.contains?("not found")
     |> Kernel.not()
   end
@@ -37,11 +36,6 @@ defmodule KinoUtil.Utils do
       |> (fn x -> Enum.zip(labels, x) end).()
       |> Enum.into(%{})
 
-    util_gpu = values["util_gpu"]
-    util_mem = values["util_mem"]
-    # mem_used = values["mem_used"] |> Kernel./(1.0e3) |> round()
-    # mem_total = values["mem_total"] |> Kernel./(1.0e3) |> round()
-
-    {util_gpu, util_mem}
+    {values["util_gpu"], values["util_mem"], values["mem_used"], values["mem_total"]}
   end
 end
